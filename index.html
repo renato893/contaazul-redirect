@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecionando…</title>
+  <style>
+    body { font-family: -apple-system, 'Inter', sans-serif; display: flex; min-height: 100vh; align-items: center; justify-content: center; margin: 0; background: #f9fafb; color: #111827; text-align: center; }
+    p { color: #6b7280; max-width: 28rem; }
+  </style>
+</head>
+<body>
+  <div>
+    <h2 id="title">Conectando ao Financeiro PRO…</h2>
+    <p id="msg">Você será redirecionado para o aplicativo em instantes.</p>
+  </div>
+  <script>
+    // Repassa code/state (ou error) da Conta Azul para o servidor local do app.
+    // Só funciona no computador onde o Financeiro PRO está aberto.
+    var LOCAL_CALLBACK = 'http://localhost:3001/api/auth/callback';
+    var query = window.location.search;
+    if (query) {
+      window.location.replace(LOCAL_CALLBACK + query);
+    } else {
+      document.getElementById('title').textContent = 'Nada para redirecionar';
+      document.getElementById('msg').textContent = 'Esta página é aberta automaticamente pela Conta Azul após o login.';
+    }
+  </script>
+</body>
+</html>
